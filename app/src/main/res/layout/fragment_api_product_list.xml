@@ -20,6 +20,66 @@
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/RoundedCornersImage" />
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/indoorChipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        app:chipSpacingHorizontal="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivAppLogo"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_all"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="All"
+            android:textAlignment="center"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="@color/Plant_base_color"
+            app:chipStrokeColor="@color/Plant_top_color"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/greenPrimary" />
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_indoor"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Indoor"
+            android:textAlignment="center"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="@color/Plant_base_color"
+            app:chipStrokeColor="#DDDDDD"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/Plant_top_color" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_outdoor"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Outdoor"
+            app:checkedIconVisible="false"
+            app:chipBackgroundColor="@color/Plant_base_color"
+            app:chipStrokeColor="@color/Plant_base_color"
+            app:chipStrokeWidth="1dp"
+            app:rippleColor="@color/greenPrimary" />
+    </com.google.android.material.chip.ChipGroup>
+
     <Button
         android:id="@+id/btnGoToFavorites"
         android:layout_width="wrap_content"
@@ -38,15 +98,15 @@
         android:id="@+id/rvApiProducts"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="14dp"
         android:clipToPadding="false"
         android:padding="8dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivAppLogo"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/indoorChipGroup"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_plant" />
 
     <ProgressBar

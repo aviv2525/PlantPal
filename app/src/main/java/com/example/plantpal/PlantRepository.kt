@@ -9,6 +9,10 @@ class PlantRepository @Inject constructor(
         return apiService.getPlants(apiKey)
     }
 
+    suspend fun getPlants(indoor: Int? ,apiKey: String): PlantResponse {
+        return apiService.getPlants(indoor,apiKey)
+    }
+
     suspend fun getPlantDetails(id: Int , apiKey: String): ApiPlantDetails  {
         return apiService.getPlantDetails(id, apiKey)
     }

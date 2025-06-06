@@ -11,6 +11,13 @@ interface ApiPlantService {
         @Query("key") apiKey: String
     ): PlantResponse
 
+    @GET("species-list")
+    suspend fun getPlants(
+        @Query("indoor") indoor: Int? = null,
+        @Query("key") apiKey: String
+
+    ): PlantResponse
+
 
     @GET("species/details/{id}")
     suspend fun getPlantDetails(

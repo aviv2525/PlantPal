@@ -90,6 +90,29 @@ class PlantViewModel @Inject constructor(
 
 
 
+    fun fetchPlants(indoor: Int? = null) {
+        Log.d("FILTER_LOG", "Fetching plants with filter: indoor = $indoor")
+
+        viewModelScope.launch {
+            _plantList.value = Resource.Loading()
+            try {
+                val response = repository.getPlants(indoor,apiKey)
+                val result = response.data
+
+                Log.d("FILTER_LOG", "Received response: $result")
+                Log.d("FILTER_LOG", "Number of plants: ${result.size}")
+                Log.d("FILTER_LOG", "Received ${response.data.size} plants from API")
+
+                _plantList.value = Resource.Success(response.data)
+            } catch (e: Exception) {
+                Log.e("PLANT_DEBUG", "Error filtering plants", e)
+                _plantList.value = Resource.Error("Couldn't filter: ${e.message}")
+            }
+        }
+    }
+
+
+
     fun fetchPlantsFromApi() {
         viewModelScope.launch {
             _plantList.value = Resource.Loading() // ⏳ טוען
@@ -100,7 +123,11 @@ class PlantViewModel @Inject constructor(
                 Log.e("PLANT_DEBUG", "Error fetching plants", e)
                 _plantList.value = Resource.Error("Failed to load plants: ${e.message}")
             }
+
+
         }
+
+
     }
 
 

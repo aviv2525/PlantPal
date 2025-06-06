@@ -44,10 +44,21 @@ class ApiPlantListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("ApiPlantListFragment", "Fragment loaded")
+
+        binding.indoorChipGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.chip_all -> plantViewModel.fetchPlants(indoor = null)
+                R.id.chip_indoor -> plantViewModel.fetchPlants(indoor = 1)
+                R.id.chip_outdoor -> plantViewModel.fetchPlants(indoor = 0)
+            }
+        }
+
         plantViewModel.fetchPlantsFromApi()
 
         setupRecyclerView()
         observePlants()
+
+
 
         binding.btnGoToFavorites.setOnClickListener {
             findNavController().navigate(R.id.action_apiPlantListFragment_to_plantListFragment)
