@@ -47,6 +47,8 @@ class FavoritePlantDetailFragment : Fragment() {
             // Set plant details
             tvPlantName.text = args.plant.commonName ?: "Unknown"
             tvScientificName.text = args.plant.scientificName ?: ""
+            tvWateringInfo.text = args.plant.watering ?: ""
+            tvSunlightInfo.text = args.plant.sunlight ?: ""
 
             // Set default radio button
             rgWateringFrequency.check(R.id.rbAverage)

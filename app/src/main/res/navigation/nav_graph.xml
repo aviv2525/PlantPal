@@ -78,10 +78,19 @@
             app:destination="@id/plantDetailFragment" />
         <action
             android:id="@+id/action_apiPlantListFragment_to_plantListFragment"
-            app:destination="@id/plantListFragment" />
+            app:destination="@id/plantListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_apiPlantListFragment_to_favoritePlantDetailFragment"
-            app:destination="@id/favoritePlantDetailFragment" />
+            app:destination="@id/favoritePlantDetailFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
 
     <fragment
