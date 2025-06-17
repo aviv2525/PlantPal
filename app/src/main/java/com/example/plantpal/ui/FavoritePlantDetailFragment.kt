@@ -1,4 +1,4 @@
-package com.example.plantpal
+package com.example.plantpal.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.plantpal.PlantViewModel
+import com.example.plantpal.R
 import com.example.plantpal.databinding.FragmentFavoritePlantDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 

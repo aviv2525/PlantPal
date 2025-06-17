@@ -31,7 +31,9 @@ class FavoriteRepository @Inject constructor(
             id = plant.id,
             commonName = plant.commonName,
             scientificName = plant.scientificName,
-            imageUrl = plant.imageUrl
+            imageUrl = plant.imageUrl,
+            watering = plant.watering,
+            sunlight = plant.sunlight
         )
         dao.insert(favorite)
     }
@@ -40,8 +42,12 @@ class FavoriteRepository @Inject constructor(
         dao.deleteById(plant.id)
     }
 
+    suspend fun removeById(plantId: Int) = dao.deleteById(plantId)
+
+    suspend fun getPlantDetails(plantId: Int): ApiPlant = apiService.getPlantDetails(plantId)
+
+
+    }
 
 
 
-
-}

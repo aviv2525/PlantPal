@@ -15,7 +15,7 @@ data class ApiPlant(
     @SerializedName("common_name") val commonName: String?,
     @SerializedName("scientific_name") val scientificName: List<String>?,
     @SerializedName("watering") val watering: String?,
-    @SerializedName("sunlight") val sunlight: String?,
+    @SerializedName("sunlight") val sunlight: List<String>?,
     @SerializedName("default_image") val defaultImage: PlantImage?
 ) : Parcelable {
     val imageUrl: String?
@@ -35,7 +35,7 @@ fun ApiPlant.toPlant(): Plant {
         commonName = this.commonName ?: "Unknown",
         scientificName = this.scientificName?.joinToString(", "),
         watering = this.watering,
-        sunlight = this.sunlight,
+        sunlight = this.sunlight?.joinToString(", "),  // ⬅️ המרה ממערך למחרוזת אחת
         imageUrl = this.imageUrl
     )
 }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/addEditPlantFragment"
-        android:name="com.example.plantpal.AddEditPlantFragment"
+        android:name="com.example.plantpal.ui.AddEditPlantFragment"
         android:label="Add/Edit Plant">
         <argument
             android:name="plant"
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/plantDetailFragment"
-        android:name="com.example.plantpal.PlantDetailFragment"
+        android:name="com.example.plantpal.ui.PlantDetailFragment"
         android:label="Plant Details">
         <argument
             android:name="plant"
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/plantListFragment"
-        android:name="com.example.plantpal.PlantListFragment"
+        android:name="com.example.plantpal.ui.PlantListFragment"
         android:label="Saved Plants">
         <action
             android:id="@+id/action_plantListFragment_to_addEditPlantFragment"
@@ -86,7 +86,7 @@
 
     <fragment
         android:id="@+id/favoritePlantDetailFragment"
-        android:name="com.example.plantpal.FavoritePlantDetailFragment"
+        android:name="com.example.plantpal.ui.FavoritePlantDetailFragment"
         android:label="Favorite Plant Details"
         tools:layout="@layout/fragment_favorite_plant_detail">
         <argument

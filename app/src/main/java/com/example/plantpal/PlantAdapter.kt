@@ -86,7 +86,8 @@ class PlantAdapter(
 
         fun bind(plant: Plant) {
             binding.tvPlantName.text = plant.commonName ?: "Unknown Plant"
-            binding.tvWateringInfo.text = plant.scientificName ?: ""
+            binding.tvWateringInfo.text = plant.watering ?: ""
+            binding.tvSunlightInfo.text = plant.sunlight ?: ""
 
             Glide.with(binding.root.context)
                 .load(plant.imageUrl ?: R.drawable.plantpal_icon)

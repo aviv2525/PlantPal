@@ -18,6 +18,8 @@ interface ApiPlantService {
 
     ): PlantResponse
 
+    @GET("plants/{id}")
+    suspend fun getPlantDetails(@Path("id") plantId: Int): ApiPlant
 
     @GET("species/details/{id}")
     suspend fun getPlantDetails(

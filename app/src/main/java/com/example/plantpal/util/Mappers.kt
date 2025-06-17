@@ -9,7 +9,7 @@ fun ApiPlant.toCachedEntity(): CachedApiPlant {
         id = this.id,
         commonName = this.commonName ?: "",
         watering = this.watering?: "",
-        sunlight = this.sunlight?: "",
+        sunlight = (this.sunlight?: "").toString(),
         scientificName = this.scientificName?.joinToString(", ") ?: "",
         imageUrl = this.imageUrl?: ""
     )

@@ -88,8 +88,6 @@ class PlantViewModel @Inject constructor(
     }
 */
 
-
-
     fun fetchPlants(indoor: Int? = null) {
         Log.d("FILTER_LOG", "Fetching plants with filter: indoor = $indoor")
 
@@ -111,8 +109,6 @@ class PlantViewModel @Inject constructor(
         }
     }
 
-
-
     fun fetchPlantsFromApi() {
         viewModelScope.launch {
             _plantList.value = Resource.Loading() // ⏳ טוען
@@ -129,7 +125,6 @@ class PlantViewModel @Inject constructor(
 
 
     }
-
 
     fun fetchPlantDetails(id: Int) {
         viewModelScope.launch {

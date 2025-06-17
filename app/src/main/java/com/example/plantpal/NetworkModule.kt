@@ -15,7 +15,8 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val TIMEOUT = 30L // שניות
-    private const val BASE_URL = "https://perenual.com/api/"
+    private const val BASE_URL = "https://perenual.com/api/v2/"
+
 
     @Provides
     @Singleton

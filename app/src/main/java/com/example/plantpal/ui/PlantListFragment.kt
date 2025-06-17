@@ -1,4 +1,4 @@
-package com.example.plantpal
+package com.example.plantpal.ui
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,6 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.plantpal.FavoritePlant
+import com.example.plantpal.FavoriteViewModel
+import com.example.plantpal.Plant
+import com.example.plantpal.PlantAdapter
+import com.example.plantpal.R
 import com.example.plantpal.databinding.FragmentPlantListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,7 +66,9 @@ class PlantListFragment : Fragment() {
                             id = plant.id,
                             commonName = plant.commonName,
                             scientificName = plant.scientificName,
-                            imageUrl = plant.imageUrl
+                            imageUrl = plant.imageUrl,
+                            watering = plant.watering,
+                            sunlight = plant.sunlight
                         )
                     )
                 findNavController().navigate(action)
@@ -89,8 +96,8 @@ class PlantListFragment : Fragment() {
                     id = it.id,
                     commonName = it.commonName,
                     scientificName = it.scientificName,
-                    watering = null,
-                    sunlight = null,
+                    watering = it.watering,
+                    sunlight = it.sunlight,
                     imageUrl = it.imageUrl
                 )
             })

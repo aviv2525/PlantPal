@@ -19,5 +19,11 @@ data class FavoritePlant(
     val scientificName: String?,
 
     @ColumnInfo(name = "image_url")
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+
+    @ColumnInfo(name = "Watering")
+    val watering: String?,
+
+    @ColumnInfo(name = "Sunlight")
+    val sunlight: String?
 ) : Parcelable

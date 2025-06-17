@@ -74,6 +74,7 @@ class ApiPlantListFragment : Fragment() {
             },
             onItemLongClick = { /* אפשרות עתידית */ },
             onFavoriteClick = { apiPlant ->
+                Log.d("FAV_DEBUG", "onFavoriteClick called for id: ${apiPlant.id}")
                 favoriteViewModel.toggleFavorite(apiPlant.toPlant())
             },
             isFavoriteCheck = { id ->

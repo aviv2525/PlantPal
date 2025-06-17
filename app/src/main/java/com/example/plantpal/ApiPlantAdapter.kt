@@ -86,7 +86,10 @@ class ApiPlantAdapter(
             Log.d("PLANT_DEBUG", "Binding plant: ${plant.commonName}")
 
             binding.tvPlantName.text = plant.commonName ?: "Unknown Plant"
-            binding.tvWateringInfo.text = plant.scientificName?.joinToString(", ") ?: "Unknown"
+
+
+            binding.tvWateringInfo.text = plant.watering
+            binding.tvSunlightInfo.text = plant.sunlight.toString()
 
 
             // Watering info
@@ -107,7 +110,7 @@ class ApiPlantAdapter(
                 "full_shade" -> "🌑"
                 else -> "❓"
             }
-            binding.tvSunlightInfo.text = ""
+            //binding.tvSunlightInfo.text = "Sunlight $sunlightEmoji ${plant.sunlight?.joinToString(", ") ?: "Unknown"}"
 
             binding.ivEditHint.visibility = View.GONE
             binding.tvHintEdit.visibility = View.GONE
@@ -139,6 +142,7 @@ class ApiPlantAdapter(
 
 
             binding.btnFavorite.setOnClickListener {
+                Log.d("FAV_DEBUG", "Favorite button clicked for plant id: ${plant.id}")
                 onFavoriteClick(plant)
                 notifyItemChanged(adapterPosition)
             }

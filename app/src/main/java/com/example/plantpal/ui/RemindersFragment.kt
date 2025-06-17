@@ -1,4 +1,4 @@
-package com.example.plantpal
+package com.example.plantpal.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.WorkInfo
+import com.example.plantpal.PlantViewModel
+import com.example.plantpal.RemindersAdapter
+import com.example.plantpal.WateringReminder
 import com.example.plantpal.databinding.FragmentRemindersBinding
-import com.example.plantpal.util.Resource
 import com.example.plantpal.util.WateringReminderScheduler
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit

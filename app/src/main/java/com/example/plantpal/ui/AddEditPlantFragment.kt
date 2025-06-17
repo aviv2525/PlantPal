@@ -1,4 +1,4 @@
-package com.example.plantpal
+package com.example.plantpal.ui
 
 import android.app.AlertDialog
 import android.graphics.Bitmap
@@ -19,6 +19,9 @@ import androidx.navigation.fragment.navArgs
 
 import java.io.File
 import androidx.core.net.toUri
+import com.example.plantpal.FavoriteViewModel
+import com.example.plantpal.Plant
+import com.example.plantpal.R
 import com.example.plantpal.databinding.FragmentAddEditPlantBinding
 import dagger.hilt.android.AndroidEntryPoint
 

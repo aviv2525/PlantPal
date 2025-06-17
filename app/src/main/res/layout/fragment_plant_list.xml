@@ -11,8 +11,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivAppLogo"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
             android:contentDescription=""
@@ -20,16 +20,18 @@
             android:src="@drawable/plantpal_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/RoundedCornersImage" />
+            app:shapeAppearanceOverlay="@style/RoundedCornersImage"
+            app:cornerRadius="60dp"
+            />
 
         <Button
             android:id="@+id/addButton"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:elevation="2dp"
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/greenPrimary"
+            android:elevation="2dp"
             android:text="go to add"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +39,7 @@
 
         <Button
             android:id="@+id/btnViewReminders"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
@@ -47,28 +49,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addButton" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="18dp"
-            android:background="#CCCCCC"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavorites"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="13dp"
             android:clipToPadding="false"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivAppLogo"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@id/btnViewReminders"
+            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_plant" />
 </androidx.constraintlayout.widget.ConstraintLayout>
