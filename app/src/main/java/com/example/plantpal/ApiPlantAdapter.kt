@@ -100,7 +100,7 @@ class ApiPlantAdapter(
                 "none" -> "🚫"
                 else -> ""
             }
-            binding.tvWateringInfo.text = "Watering and Sunlight $wateringEmoji ${plant.watering ?: "\nClick for info"}"
+            binding.tvWateringInfo.text = "Watering and Sunlight $wateringEmoji ${plant.watering ?:""}"
 
             // Sunlight info
             val sunlightEmoji = when (plant.sunlight?.firstOrNull()?.lowercase()) {
@@ -110,7 +110,7 @@ class ApiPlantAdapter(
                 "full_shade" -> "🌑"
                 else -> "❓"
             }
-            //binding.tvSunlightInfo.text = "Sunlight $sunlightEmoji ${plant.sunlight?.joinToString(", ") ?: "Unknown"}"
+            binding.tvSunlightInfo.text = "☀️  💧   \nClick for info "
 
             binding.ivEditHint.visibility = View.GONE
             binding.tvHintEdit.visibility = View.GONE
