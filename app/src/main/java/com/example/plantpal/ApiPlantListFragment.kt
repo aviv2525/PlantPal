@@ -53,17 +53,26 @@ class ApiPlantListFragment : Fragment() {
             }
         }
 
-        plantViewModel.fetchPlantsFromApi()
-
         setupRecyclerView()
         observePlants()
 
+        // החזרת מצב הסינון האחרון (ה-chip הנבחר)
+        val lastCheckedId = when (plantViewModel.selectedFilter) {
+            null -> R.id.chip_all
+            1 -> R.id.chip_indoor
+            0 -> R.id.chip_outdoor
+            else -> R.id.chip_all
+        }
+        binding.indoorChipGroup.check(lastCheckedId)
 
+        // הפעלת סינון לפי המצב האחרון
+        plantViewModel.fetchPlants(plantViewModel.selectedFilter)
 
         binding.btnGoToFavorites.setOnClickListener {
             findNavController().navigate(R.id.action_apiPlantListFragment_to_plantListFragment)
         }
     }
+
 
     private fun setupRecyclerView() {
         adapter = ApiPlantAdapter(

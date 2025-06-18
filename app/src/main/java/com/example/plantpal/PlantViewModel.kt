@@ -23,6 +23,7 @@ class PlantViewModel @Inject constructor(
     private val repository: PlantRepository,
     private val cachedRepository: CachedApiPlantRepository,
     private val reminderScheduler: WateringReminderScheduler
+
 ) : ViewModel() {
 
 
@@ -35,11 +36,15 @@ class PlantViewModel @Inject constructor(
     private val _plantDetails = MutableLiveData<Resource<ApiPlantDetails>>()
     val plantDetails: LiveData<Resource<ApiPlantDetails>> = _plantDetails
 
+    var selectedFilter: Int? = null
+
+
     val apiKey = "sk-jUJ3682e15df5603a10557"
 
     val activeReminders = reminderScheduler.getWateringRemindersLiveData()
 
     init {
+
         fetchPlantsCacheFirst()
     }
 
@@ -90,6 +95,7 @@ class PlantViewModel @Inject constructor(
 
     fun fetchPlants(indoor: Int? = null) {
         Log.d("FILTER_LOG", "Fetching plants with filter: indoor = $indoor")
+        selectedFilter = indoor
 
         viewModelScope.launch {
             _plantList.value = Resource.Loading()

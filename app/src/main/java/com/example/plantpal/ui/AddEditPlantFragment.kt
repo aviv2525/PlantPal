@@ -79,7 +79,7 @@ class AddEditPlantFragment : Fragment() {
             binding.etPlantSunlight.setText(plant.sunlight)
 
             plant.imageUrl?.let {
-                selectedImageUri = R.drawable.plantpal_icon.toString().toUri()
+                selectedImageUri = it.toUri()
                 binding.ivPlantImage.setImageURI(selectedImageUri)
                 binding.ivPlantImage.visibility = View.VISIBLE
             }

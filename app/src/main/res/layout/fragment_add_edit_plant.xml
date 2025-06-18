@@ -4,13 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundLight"
-    android:padding="16dp">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="18dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp"
         android:gravity="center_horizontal">
 
         <Button
@@ -26,7 +29,7 @@
             android:id="@+id/title_add_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add_edit_plant"
+            android:text="@string/add_edit_plant"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/greenPrimary"
@@ -72,7 +75,7 @@
             android:id="@+id/btnSelectImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="select_image"
+            android:text="@string/select_image"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/greenPrimary"
             android:textColor="@color/white" />
@@ -92,6 +95,7 @@
             android:layout_height="wrap_content"
             android:text="save plant"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="@color/greenPrimary"
             android:textColor="@color/white" />
 

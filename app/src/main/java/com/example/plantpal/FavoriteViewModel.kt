@@ -1,9 +1,12 @@
 package com.example.plantpal
 
+import android.app.Dialog
 import android.util.Log
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide
 import com.example.plantpal.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -91,6 +94,11 @@ class FavoriteViewModel @Inject constructor(
         watering = this.watering,
         sunlight = this.sunlight
     )
+
+
+
+
+
 
 //    fun addFavoriteWithDetails(plantId: Int) {
 //        viewModelScope.launch(Dispatchers.IO) {

@@ -1,9 +1,11 @@
 package com.example.plantpal.ui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -35,6 +37,28 @@ class FavoritePlantDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
         setupClickListeners()
+
+        binding.ivPlantImage.setOnClickListener {
+            showImageFullScreen(args.plant.imageUrl ?: R.drawable.plantpal_icon)
+        }
+    }
+
+
+    private fun showImageFullScreen(imageSource: Any) {
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        dialog.setContentView(R.layout.dialog_fullscreen_image)
+
+        val imageView = dialog.findViewById<ImageView>(R.id.fullscreenImageView)
+
+        Glide.with(requireContext())
+            .load(imageSource)
+            .into(imageView)
+
+        imageView.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setupUI() {
