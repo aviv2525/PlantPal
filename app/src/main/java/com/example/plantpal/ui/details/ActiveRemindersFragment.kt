@@ -1,18 +1,21 @@
 package com.example.plantpal.ui.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.plantpal.viewmodel.PlantViewModel
-import com.example.plantpal.model.WateringReminder
+import androidx.work.WorkInfo
 import com.example.plantpal.databinding.FragmentActiveRemindersBinding
+import com.example.plantpal.model.WateringReminder
 import com.example.plantpal.ui.adapter.RemindersAdapter
 import com.example.plantpal.util.WateringReminderScheduler
+import com.example.plantpal.viewmodel.FavoriteViewModel
+import com.example.plantpal.viewmodel.PlantViewModel
+import com.example.plantpal.workers.WateringReminderWorker
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
@@ -21,7 +24,10 @@ class ActiveRemindersFragment : Fragment() {
 
     private var _binding: FragmentActiveRemindersBinding? = null
     private val binding get() = _binding!!
+
     private val viewModel: PlantViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
+
     private lateinit var remindersAdapter: RemindersAdapter
     private val TAG = "ActiveRemindersFragment"
 
@@ -31,6 +37,11 @@ class ActiveRemindersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentActiveRemindersBinding.inflate(inflater, container, false)
+
+        binding.backToListButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         return binding.root
     }
 
@@ -53,36 +64,40 @@ class ActiveRemindersFragment : Fragment() {
     }
 
     private fun observeReminders() {
-        viewModel.activeReminders.observe(viewLifecycleOwner) { workInfos ->
-            Log.d(TAG, "Received ${workInfos.size} workInfos")
+        favoriteViewModel.favorites.observe(viewLifecycleOwner) { favorites ->
+            val reminderList = mutableListOf<WateringReminder>()
 
-            val reminders = workInfos.mapNotNull { workInfo ->
-                val frequency = workInfo.tags.firstOrNull {
-                    it == "frequent" || it == "average" || it == "minimum"
-                } ?: "average"
+            favorites.forEach { plant ->
+                val plantName = plant.commonName ?: return@forEach
 
-                val plantName = workInfo.tags.firstOrNull {
-                    it != "frequent" && it != "average" && it != "minimum" && it != "watering_reminder"
-                } ?: return@mapNotNull null
+                viewModel.getReminderForPlant(plantName).observe(viewLifecycleOwner) { workInfos ->
+                    val activeInfo = workInfos.firstOrNull { it.state == WorkInfo.State.ENQUEUED }
 
-                val nextWateringDate = System.currentTimeMillis() + when (frequency) {
-                    "frequent" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.FREQUENT_DAYS)
-                    "average" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.AVERAGE_DAYS)
-                    "minimum" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.MINIMUM_DAYS)
-                    else -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.DEFAULT_DAYS)
+                    if (activeInfo != null) {
+                        val outputPlantName = activeInfo.outputData.getString(WateringReminderWorker.PLANT_NAME_KEY) ?: plantName
+                        val frequency = activeInfo.tags.firstOrNull {
+                            it == "frequent" || it == "average" || it == "minimum"
+                        } ?: "average"
+
+                        val nextWateringDate = System.currentTimeMillis() + when (frequency) {
+                            "frequent" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.FREQUENT_DAYS)
+                            "average" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.AVERAGE_DAYS)
+                            "minimum" -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.MINIMUM_DAYS)
+                            else -> TimeUnit.DAYS.toMillis(WateringReminderScheduler.DEFAULT_DAYS)
+                        }
+
+                        val reminder = WateringReminder(
+                            plantName = outputPlantName,
+                            wateringFrequency = frequency,
+                            nextWateringDate = nextWateringDate
+                        )
+
+                        reminderList.add(reminder)
+                        remindersAdapter.submitList(reminderList.toList())
+                        binding.tvNoReminders.visibility = View.GONE
+                    }
                 }
-
-                Log.d(TAG, "Parsed reminder: Plant=$plantName, Frequency=$frequency, Next=$nextWateringDate")
-
-                WateringReminder(
-                    plantName = plantName,
-                    wateringFrequency = frequency,
-                    nextWateringDate = nextWateringDate
-                )
             }
-
-            remindersAdapter.submitList(reminders)
-            binding.tvNoReminders.visibility = if (reminders.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 
@@ -90,4 +105,4 @@ class ActiveRemindersFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-} 
+}

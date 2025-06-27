@@ -19,6 +19,7 @@ import com.example.plantpal.viewmodel.PlantViewModel
 import com.example.plantpal.R
 import com.example.plantpal.databinding.FragmentPlantDetailBinding
 import com.example.plantpal.util.Resource
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlin.collections.joinToString
 
@@ -57,10 +58,19 @@ class PlantDetailFragment : Fragment() {
         plantId = plant.id
         Log.d("DETAILS_DEBUG", "Sending plantId: $plantId")
 
-        binding.tvPlantName.text = plant.commonName ?: "Unknown Plant"
-        binding.tvScientificName.text = plant.scientificName?.joinToString(", ") ?: "N/A"
-        binding.tvWateringInfo.text = "Watering - ${plant.watering ?: "Loading . ."}"
-        binding.tvSunlightInfo.text = "Sunlight - ${plant.sunlight ?: "Loading . ."}"
+        binding.tvPlantName.text = plant.commonName ?: getString(R.string.unknown_plant)
+        binding.tvScientificName.text = getString(R.string.scientific_name) + plant.scientificName?.joinToString(", ") ?: "N/A"
+
+        binding.tvWateringInfo.text = buildString {
+            append(binding.tvWateringInfo.text)
+            append("Loading. . .")
+        }
+       binding.tvSunlightInfo.text = buildString {
+            append(binding.tvSunlightInfo.text)
+            append("Loading. . .")
+        }
+
+
 
         // הצגת תמונה
         val imageUrl = plant.defaultImage?.originalUrl
@@ -81,10 +91,8 @@ class PlantDetailFragment : Fragment() {
             showImageFullScreen(imageUrl ?: R.drawable.plantpal_icon)
         }
 
-        binding.btnBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-        
+
+
 
         // שליפת מידע נוסף מה-API
         viewModel.fetchPlantDetails(plantId)
@@ -96,39 +104,32 @@ class PlantDetailFragment : Fragment() {
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
                     val details = state.data
-                    Log.d("DEBUG_WATERING", "watering: ${details.watering}")
-                    Log.d("DETAILS_JSON", Gson().toJson(details))
 
-                    // - לא קיים עדכון טקסטים עם המידע החדש
-                    //binding.tvWateringInfo.text = "Watering: ${details.watering ?: "N/A"}"
-                    //🔍 The 'watering' field often returns null from the API.
-                    // To demonstrate proper UI handling and fallback behavior,
-                    // I simulate a value from the documented options instead of leaving it empty.
-                    // בדיקה: אם אין מידע מה-API, נבחר ערך רנדומלי
-                    //val wateringRaw = details.watering ?: wateringOptions.random()
-
-                    val wateringOptions = listOf("frequent", "average", "minimum", "none")
+                    val wateringOptions = listOf(
+                        getString(R.string.frequent),
+                        getString(R.string.average),
+                        getString(R.string.minimum),
+                        getString(R.string.none))
                     wateringRaw = details.watering
                     val wateringText = when (wateringRaw?.lowercase()) {
                         "frequent" -> "💧💧💧 frequent"
                         "average" -> "💧💧 average"
                         "minimum" -> "💧 minimum "
                         "none" -> "🚫 No water needed"
-                        else -> "❓ unavailable "
+                        else -> " "
                     }
 
-                    binding.tvWateringInfo.text = wateringText
-
-                    // מגיע NULL ולכן נבצע RANDOM
-                    //binding.tvSunlightInfo.text = "Sunlight: ${details.sunlight?.joinToString(", ") ?: "N/A"}"
-                    // בדיקה: אם אין מידע מה-API, נבחר ערך רנדומלי
-                    // 🔍 The 'sunlight' field is sometimes null or missing from the API.
-// To               maintain a consistent user experience,
-// I                randomly display one of the valid values based on the API documentation.
-
-                    val sunlightOptions = listOf("full_sun", "part_shade", "full_shade", "sun-part_shade")
+                    binding.tvWateringInfo.text = getString(R.string.watering_info) + wateringText
 
 
+
+
+                    val sunlightOptions =
+                        listOf(
+                            getString(R.string.full_sun),
+                            getString(R.string.part_shade),
+                            getString(R.string.full_shade),
+                            getString(R.string.sun_part_shade))
 
                     val sunlightTexts = details.sunlight?.map { sunlightValue ->
                         when (sunlightValue.lowercase()) {
@@ -142,10 +143,7 @@ class PlantDetailFragment : Fragment() {
                     } ?: listOf("❓ unknown")
 
                     sunlightRaw = details.sunlight?.joinToString ( " | " )
-                    binding.tvSunlightInfo.text = sunlightTexts.joinToString(" | ")
-                    Log.d("DETAILS_DEBUG", "Sunlight raw from API: ${details.sunlight}")
-                    //Log.d("DETAILS_DEBUG", "sunlightRaw = $sunlightRaw")
-
+                    binding.tvSunlightInfo.text = getString(R.string.sunlight_info) + sunlightTexts.joinToString(" | ")
 
 
                     // טעינת תמונה מעודכנת אם קיימת
@@ -179,6 +177,31 @@ class PlantDetailFragment : Fragment() {
             )
             Toast.makeText(requireContext(), "Save Successfully", Toast.LENGTH_SHORT).show()
         }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.btnViewCareTips.setOnClickListener {
+            Snackbar.make(
+                binding.root,
+                getString(R.string.to_set_watering_reminders_please_add_this_plant_to_your_favorites),
+                Snackbar.LENGTH_LONG
+            ).setAction(getString(R.string.add_now)) {
+                favoriteViewModel.addFavorite(
+                    Plant(
+                        id = plantId,
+                        commonName = binding.tvPlantName.text.toString(),
+                        scientificName = binding.tvScientificName.text.toString(),
+                        imageUrl = currentImageUrl,
+                        watering = binding.tvWateringInfo.text.toString(),
+                        sunlight = binding.tvSunlightInfo.text.toString()
+                    )
+                )
+                Toast.makeText(requireContext(),
+                    getString(R.string.save_successfully), Toast.LENGTH_SHORT).show()            }.show()
+        }
+
 
     }
 

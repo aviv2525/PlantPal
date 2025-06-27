@@ -39,8 +39,8 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:clipToPadding="false"
-        android:paddingHorizontal="6dp"
-        android:paddingVertical="6dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
         app:chipSpacingHorizontal="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,13 +51,13 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_all"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="96dp"
-            android:layout_height="48dp"
+            android:layout_width="136dp"
+            android:layout_height="52dp"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:gravity="center"
-            android:text="All"
+            android:text="@string/all"
             android:textAlignment="center"
             app:checkedIconVisible="false"
             app:chipBackgroundColor="@color/chip_bg_selector"
@@ -69,10 +69,10 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_indoor"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="96dp"
-            android:layout_height="48dp"
+            android:layout_width="136dp"
+            android:layout_height="52dp"
             android:gravity="center"
-            android:text="Indoor"
+            android:text="@string/indoor"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -89,11 +89,11 @@
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_outdoor"
             style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="96dp"
-            android:layout_height="48dp"
+            android:layout_width="136dp"
+            android:layout_height="52dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="Outdoor"
+            android:text="@string/outdoor"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -102,6 +102,7 @@
             app:chipStrokeColor="@color/chip_stroke_selector"
             app:chipStrokeWidth="2dp"
             app:rippleColor="@color/greenPrimary" />
+
     </com.google.android.material.chip.ChipGroup>
 </HorizontalScrollView>
 

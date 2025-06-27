@@ -65,7 +65,12 @@
 
         <action
             android:id="@+id/action_plantListFragment_to_activeRemindersFragment"
-            app:destination="@id/activeRemindersFragment" />
+            app:destination="@id/activeRemindersFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            />
     </fragment>
 
     <fragment

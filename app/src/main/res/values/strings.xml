@@ -2,7 +2,7 @@
     <string name="app_name">PlantPal</string>
     <string name="back">Back</string>
     <string name="plant_image">Plant Image</string>
-    <string name="plant_name">Plant Name</string>
+    <string name="plant_name">Plant Name: </string>
     <string name="set_water_reminder">Set Watering Reminder</string>
     <string name="select_image_source">select image source\n</string>
     <string name="please_enter_plant_name">please enter plant name</string>
@@ -30,19 +30,48 @@
     <string name="cancel_reminder">Cancel Reminder</string>
     
     <!-- Reminder Frequency Strings -->
-    <string name="frequency_frequent">Every 2 days</string>
-    <string name="frequency_average">Every 5 days</string>
-    <string name="frequency_minimum">Every 10 days</string>
+    <string name="frequency_frequent">Every 2 days (frequent)</string>
+    <string name="frequency_average">Every 5 days (Average)</string>
+    <string name="frequency_minimum">Every 10 days(minimum)</string>
     <string name="frequency_unknown">Unknown frequency</string>
 
     <!-- Colors -->
-    <string name="greenPrimary">#4CAF50</string>
-    <string name="greenLight">#A5D6A7</string>
-    <string name="backgroundLight">#F5F5F5</string>
-    <string name="black">#000000</string>
-    <string name="white">#FFFFFF</string>
+    <string name="greenPrimary" translatable="false">#4CAF50</string>
+    <string name="greenLight" translatable="false">#A5D6A7</string>
+    <string name="backgroundLight" translatable="false">#F5F5F5</string>
+    <string name="black" translatable="false">#000000</string>
+    <string name="white" translatable="false">#FFFFFF</string>
     <string name="internet_connection_error">Internet connection error: %1$s.</string>
     <string name="no_active_reminders">No active reminders</string>
     <string name="add_edit_plant">add | edit plant</string>
     <string name="select_image">select image</string>
+    <string name="all">All</string>
+    <string name="indoor">Indoor</string>
+    <string name="outdoor">Outdoor</string>
+    <string name="shadow">Shadow</string>
+    <string name="save_plant">save plant</string>
+    <string name="scientific_name">scientific name: </string>
+    <string name="scientific_name2">Scientific Name: </string>
+    <string name="test_reminder_10s">Test Reminder (10s)</string>
+    <string name="go_to_add">go to add</string>
+    <string name="add_to_my_list">Add to my list</string>
+    <string name="to_set_watering_reminders_please_add_this_plant_to_your_favorites">To set watering reminders, please add this plant to your favorites.</string>
+    <string name="add_now">Add Now</string>
+    <string name="save_successfully">Save Successfully</string>
+    <string name="watering_info">watering info: </string>
+    <string name="sunlight_info">sunlight info: </string>
+    <string name="frequent">frequent</string>
+    <string name="average">average</string>
+    <string name="minimum">minimum</string>
+    <string name="none">none</string>
+    <string name="full_sun">full_sun</string>
+    <string name="part_shade">part_shade</string>
+    <string name="full_shade">full_shade</string>
+    <string name="sun_part_shade">sun-part_shade</string>
+    <string name="unknown_plant">Unknown Plant</string>
 </resources>
+
+
+
+
+

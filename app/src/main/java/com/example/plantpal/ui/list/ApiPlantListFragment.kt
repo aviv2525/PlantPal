@@ -1,5 +1,6 @@
 package com.example.plantpal.ui.list
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -103,6 +104,7 @@ class ApiPlantListFragment : Fragment() {
 
 
 
+    @SuppressLint("StringFormatInvalid")
     private fun observePlants() {
 
         plantViewModel.plantList.observe(viewLifecycleOwner) { state ->

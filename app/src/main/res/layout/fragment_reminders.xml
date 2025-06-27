@@ -11,7 +11,7 @@
         android:id="@+id/tvRemindersTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Watering Reminders"
+        android:text="Watering Reminders111111111111"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/greenPrimary"
@@ -32,7 +32,7 @@
         android:id="@+id/tvNoReminders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No active reminders"
+        android:text="@string/no_active_reminders"
         android:textSize="18sp"
         android:textColor="@color/greenPrimary"
         android:visibility="gone"
@@ -41,4 +41,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout> 
+</androidx.constraintlayout.widget.ConstraintLayout>

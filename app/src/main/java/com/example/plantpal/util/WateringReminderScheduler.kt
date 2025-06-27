@@ -89,6 +89,11 @@ class WateringReminderScheduler(private val context: Context) {
         }
     }
 
+    fun getWorkInfosForPlant(plantName: String): LiveData<List<WorkInfo>> {
+        return workManager.getWorkInfosForUniqueWorkLiveData("watering_reminder_$plantName")
+    }
+
+
     fun getWateringRemindersLiveData(): LiveData<List<WorkInfo>> {
         return workManager.getWorkInfosByTagLiveData("watering_reminder")
     }

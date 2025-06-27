@@ -51,7 +51,13 @@ class RemindersAdapter(
                 tvNextWatering.text = "Next watering: $nextWateringDate"
 
                 btnCancelReminder.setOnClickListener {
-                    onCancelReminder(reminder.plantName)
+                    itemView.animate()
+                        .alpha(0f)
+                        .setDuration(300)
+                        .withEndAction {
+                            onCancelReminder(reminder.plantName)
+                        }
+                        .start()
                 }
             }
         }

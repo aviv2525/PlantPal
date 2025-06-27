@@ -39,36 +39,40 @@
             android:id="@+id/etPlantName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="plant name"
+            android:hint="@string/plant_name"
             android:minHeight="48dp"
             android:layout_marginTop="16dp"
+            android:textColor="@android:color/black"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
             android:id="@+id/etPlantDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="scientific name"
+            android:hint="@string/scientific_name"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
             android:id="@+id/etPlantWatering"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="watering"
+            android:hint="@string/watering"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
             android:id="@+id/etPlantSunlight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="sunlight"
+            android:hint="@string/sunlight"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
+            android:textColor="@android:color/black"
             android:backgroundTint="#3F51B5"/>
 
         <Button
@@ -93,7 +97,7 @@
             android:id="@+id/btnSavePlant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="save plant"
+            android:text="@string/save_plant"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:backgroundTint="@color/greenPrimary"

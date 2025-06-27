@@ -112,7 +112,7 @@ class ApiPlantAdapter(
                 "sun-part_shade" -> "⛅"
                 "part_shade" -> "🌤️"
                 "full_shade" -> "🌑"
-                else -> "❓"
+                else -> ""
             }
             binding.tvSunlightInfo.text = "☀️  💧   \nClick for info "
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.work.WorkInfo
 import com.example.plantpal.ui.details.ApiPlantDetails
 import com.example.plantpal.model.ApiPlant
 import com.example.plantpal.model.CachedApiPlant
@@ -160,5 +161,10 @@ class PlantViewModel @Inject constructor(
     fun scheduleTestReminder(plantName: String) {
         reminderScheduler.scheduleTestReminder(plantName)
     }
+
+    fun getReminderForPlant(plantName: String): LiveData<List<WorkInfo>> {
+        return reminderScheduler.getWorkInfosForPlant(plantName)
+    }
+
 
 }
