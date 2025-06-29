@@ -1,6 +1,7 @@
 package com.example.plantpal.ui.list
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -97,9 +99,13 @@ class ApiPlantListFragment : Fragment() {
             }
         )
 
-        binding.rvApiProducts.layoutManager = LinearLayoutManager(requireContext())
+        val orientation = resources.configuration.orientation
+        val spanCount = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 3 else 1
+
+        binding.rvApiProducts.layoutManager = GridLayoutManager(requireContext(), spanCount)
         binding.rvApiProducts.adapter = adapter
     }
+
 
 
 

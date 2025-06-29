@@ -6,7 +6,7 @@
     android:layout_margin="8dp"
     app:cardElevation="6dp"
     app:cardCornerRadius="16dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/disabledBackground"
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground">
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/watering"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryText"
             android:textSize="18sp" />
 
 
@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sunlight"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryText"
             android:textSize="14sp" />
 
 

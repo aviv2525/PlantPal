@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back"
-            android:backgroundTint="@color/greenLight"
+            android:backgroundTint="@color/white"
             android:textColor="@color/greenPrimary"
             android:layout_gravity="start"/>
 
@@ -42,7 +42,7 @@
             android:hint="@string/plant_name"
             android:minHeight="48dp"
             android:layout_marginTop="16dp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryText"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
@@ -52,7 +52,7 @@
             android:hint="@string/scientific_name"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryText"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
@@ -62,7 +62,7 @@
             android:hint="@string/watering"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryText"
             android:backgroundTint="#3F51B5"/>
 
         <EditText
@@ -72,7 +72,7 @@
             android:hint="@string/sunlight"
             android:minHeight="48dp"
             android:layout_marginTop="12dp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primaryText"
             android:backgroundTint="#3F51B5"/>
 
         <Button

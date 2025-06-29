@@ -28,4 +28,9 @@
     <color name="greenLight">#B4D8B4</color>
     <color name="backgroundLight">#D4F0C4</color>
 
+    <color name="disabledBackground">#FFFFFF</color>
+    <color name="textSecondary">#CCCCCC</color>
+    <color name="primaryText">#000000</color>
+
+
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <color name="backgroundLight">#121212</color>
+        <color name="greenPrimary">#81C784</color>
+        <color name="white">#FFFFFF</color>
+        <color name="black">#000000</color>
+        <color name="chip_bg_selector">#1E1E1E</color>
+        <color name="chip_stroke_selector">#4CAF50</color>
+        <color name="disabledBackground">#333333</color>
+        <color name="textSecondary">#CCCCCC</color>
+        <color name="primaryText">#FFFFFF</color>
+
+</resources>
