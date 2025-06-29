@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:backgroundTint="@color/greenLight"
-            android:textColor="@color/white"
+            android:textColor="@color/greenPrimary"
             android:layout_gravity="start"/>
 
         <TextView

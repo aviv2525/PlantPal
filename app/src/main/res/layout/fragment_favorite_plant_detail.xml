@@ -173,7 +173,7 @@
                     android:layout_marginBottom="14dp"
                     android:backgroundTint="@color/greenLight"
                     android:text="@string/test_reminder_10s"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/greenPrimary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
