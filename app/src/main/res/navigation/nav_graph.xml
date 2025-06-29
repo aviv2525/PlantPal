@@ -62,15 +62,16 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
-
         <action
             android:id="@+id/action_plantListFragment_to_activeRemindersFragment"
             app:destination="@id/activeRemindersFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left"
-            />
+            app:popExitAnim="@anim/to_left" />
+
+
+
     </fragment>
 
     <fragment
@@ -121,6 +122,7 @@
         android:name="com.example.plantpal.ui.details.ActiveRemindersFragment"
         android:label="Active Reminders"
         tools:layout="@layout/fragment_active_reminders" />
+
 
     <activity
         android:id="@+id/mainActivity"

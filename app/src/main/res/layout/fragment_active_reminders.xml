@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/greenLight"
         android:text="@string/back"
-        android:textColor="@color/greenPrimary"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -45,7 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- No Reminders Text -->
     <TextView
         android:id="@+id/tvNoReminders"
         android:layout_width="wrap_content"
@@ -54,9 +53,10 @@
         android:textSize="18sp"
         android:textColor="@color/greenPrimary"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rvReminders"
+        app:layout_constraintBottom_toBottomOf="@id/rvReminders"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

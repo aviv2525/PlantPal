@@ -58,9 +58,10 @@ class ActiveRemindersFragment : Fragment() {
             }
         )
         binding.rvReminders.apply {
-            adapter = remindersAdapter
             layoutManager = LinearLayoutManager(requireContext())
+            adapter = remindersAdapter
         }
+
     }
 
     private fun observeReminders() {

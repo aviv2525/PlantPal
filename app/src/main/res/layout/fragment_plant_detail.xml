@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:layout_marginTop="18dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/greenPrimary"
+            android:backgroundTint="@color/greenLight"
+            android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

@@ -9,6 +9,8 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.plantpal.R
 import android.util.Log
+import androidx.work.workDataOf
+
 
 class WateringReminderWorker(
     private val context: Context,
@@ -30,14 +32,17 @@ class WateringReminderWorker(
 
         Log.d(TAG, "Starting reminder work for plant: $plantName")
 
-        try {
+        return try {
             createNotificationChannel()
             showNotification(plantName)
             Log.d(TAG, "Successfully showed notification for $plantName")
-            return Result.success()
+
+            val output = workDataOf(PLANT_NAME_KEY to plantName)
+            Result.success(output)
+
         } catch (e: Exception) {
             Log.e(TAG, "Error showing notification for $plantName", e)
-            return Result.failure()
+            Result.failure()
         }
     }
 

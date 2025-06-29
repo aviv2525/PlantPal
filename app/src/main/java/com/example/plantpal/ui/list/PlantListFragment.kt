@@ -54,10 +54,11 @@ class PlantListFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.ivAppLogo.setOnClickListener{
+        binding.ivAppLogo.setOnClickListener {
             findNavController().navigateUp()
         }
     }
+
 
     private fun setupRecyclerView() {
         adapter = PlantAdapter(
