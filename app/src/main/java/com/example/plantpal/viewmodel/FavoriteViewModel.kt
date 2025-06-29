@@ -17,31 +17,6 @@ class FavoriteViewModel @Inject constructor(
 
     val favorites: LiveData<List<FavoritePlant>> = repository.getFavorites()
 
-//    fun toggleFavorite(plant: Plant) {
-//        Log.d("FAV_DEBUG", "toggleFavorite called for id: ${plant.id}")
-//        viewModelScope.launch(Dispatchers.IO) {
-//            if (repository.isFavorite(plant.id)) {
-//                Log.d("FAV_DEBUG", "Plant is favorite. Removing.")
-//                repository.remove(plant.toFavorite())
-//            } else {
-//                try {
-//                    Log.d("FAV_DEBUG", "Fetching details for id: ${plant.id}")
-//                    val apiPlant = repository.getPlantDetails(plant.id)
-//                    val fullPlant = apiPlant.toPlant()
-//                    Log.d("FAV_DEBUG", "Fetched API plant id: ${apiPlant.id}, name: ${apiPlant.commonName}, watering: ${apiPlant.watering}, sunlight: ${apiPlant.sunlight}")
-//                    Log.d("FAV_DEBUG", "Adding plant to favorites: ${plant.id}")
-//                    repository.add(fullPlant.toFavorite())
-//                    Log.d("FAV_DEBUG", "Plant added")
-//
-//                } catch (e: Exception) {
-//                    Log.e("FavoriteViewModel", "Error fetching details: ${e.message}")
-//                }
-//            }
-//        }
-//    }
-//
-
-
     fun toggleFavorite(plant: Plant) {
         viewModelScope.launch(Dispatchers.IO) {
             val favorite = plant.toFavorite()
@@ -93,22 +68,6 @@ class FavoriteViewModel @Inject constructor(
         sunlight = this.sunlight
     )
 
-
-
-
-
-
-//    fun addFavoriteWithDetails(plantId: Int) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                val details = repository.getPlantDetails(plantId) // קריאה ל־API
-//                val plant = details.toPlant() // פונקציה שתמיר ל-Plant עם כל הנתונים
-//                repository.add(plant.toFavorite())
-//            } catch (e: Exception) {
-//                Log.e("FavoriteViewModel", "Error adding favorite with details", e)
-//            }
-//        }
-//    }
 
 
 }

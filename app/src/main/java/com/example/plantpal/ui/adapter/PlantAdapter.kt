@@ -100,7 +100,7 @@ class PlantAdapter(
             binding.ivEditHint.visibility = View.VISIBLE
             binding.tvHintEdit.visibility = View.VISIBLE
 
-
+            // Dynamic button Change
             val isFavorite = isFavoriteCheck(plant.id)
             binding.btnFavorite.setImageResource(
                 if (isFavorite) android.R.drawable.ic_menu_delete else android.R.drawable.ic_menu_add
@@ -109,7 +109,7 @@ class PlantAdapter(
 
             binding.btnFavorite.setOnClickListener {
                 if (isFavorite) {
-                    // אם הצמח כבר מועדף – הצג התראה להסרה
+                    // only if he is already favorite
                     AlertDialog.Builder(binding.root.context)
                         .setTitle("Remove from favorites?")
                         .setMessage("Are you sure you want to remove this plant from your list?")

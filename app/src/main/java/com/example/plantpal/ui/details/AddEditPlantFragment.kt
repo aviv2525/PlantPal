@@ -70,7 +70,7 @@ class AddEditPlantFragment : Fragment() {
 
         val plant = args.plant
         val isEditMode = plant != null
-        Log.d("AddEditPlantFragment", "isEditMode: $isEditMode, plant: $plant")
+
 
         if (isEditMode) {
             binding.etPlantName.setText(plant!!.commonName)
@@ -125,7 +125,6 @@ class AddEditPlantFragment : Fragment() {
             } else {
                 viewModel.addFavorite(finalPlant)
             }
-            Log.d("AddEditPlantFragment", "isEditMode: $isEditMode, plant: $plant")
 
             Toast.makeText(requireContext(), getString(R.string.plant_saved_successfully), Toast.LENGTH_SHORT).show()
             findNavController().navigateUp()

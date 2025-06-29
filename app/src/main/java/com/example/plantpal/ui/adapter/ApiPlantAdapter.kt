@@ -26,6 +26,7 @@ class ApiPlantAdapter(
     DIFF_CALLBACK
 ) {
 
+    // Better performance :
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ApiPlant>() {
             override fun areItemsTheSame(oldItem: ApiPlant, newItem: ApiPlant): Boolean {
@@ -87,11 +88,7 @@ class ApiPlantAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(plant: ApiPlant) {
-            Log.d("PLANT_DEBUG", "Binding plant: ${plant.commonName}")
-
             binding.tvPlantName.text = plant.commonName ?: "Unknown Plant"
-
-
             binding.tvWateringInfo.text = plant.watering
             binding.tvSunlightInfo.text = plant.sunlight.toString()
 
@@ -126,7 +123,7 @@ class ApiPlantAdapter(
                 Glide.with(binding.root.context)
                     .load(imageUrl)
                     .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.ALL)
-                    .signature(ObjectKey(imageUrl)) // חתימה זהה לזו שב־preload
+                    .signature(ObjectKey(imageUrl))
                     .placeholder(R.drawable.plantpal_icon_small)
                     .override(200, 200)
                     .centerCrop()
@@ -140,9 +137,6 @@ class ApiPlantAdapter(
             binding.btnFavorite.setImageResource(
                 if (isFavorite) R.drawable.plantpal_icon else R.drawable.add_plus
             )
-
-
-
 
 
             binding.btnFavorite.setOnClickListener {

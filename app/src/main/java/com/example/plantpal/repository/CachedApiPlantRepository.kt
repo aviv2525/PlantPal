@@ -1,7 +1,6 @@
 package com.example.plantpal.repository
 
 
-import android.util.Log
 import com.example.plantpal.model.ApiPlant
 import com.example.plantpal.data.remote.ApiPlantService
 import com.example.plantpal.model.CachedApiPlant
@@ -9,6 +8,7 @@ import com.example.plantpal.data.local.CachedApiPlantDao
 import com.example.plantpal.util.Resource
 import com.example.plantpal.util.toCachedEntity
 import javax.inject.Inject
+
 
 class CachedApiPlantRepository @Inject constructor(
     private val apiService: ApiPlantService,
@@ -22,19 +22,16 @@ class CachedApiPlantRepository @Inject constructor(
             val apiPlants = response.data
 
             val cached = apiPlants.map { it.toCachedEntity() }
-            Log.d("CACHE_REPO", "Saving ${cached.size} plants to local cache")
 
             cachedDao.clearCache()
             cachedDao.insertAll(cached)
 
             Resource.Success(cached)
         } catch (e: Exception) {
-            Log.e("CACHE_REPO", "API failed: ${e.message}")
 
             val fallback = cachedDao.getAllCachedDirect()
-            Log.d("CACHE_REPO", "Loaded ${fallback.size} plants from fallback cache")
             if (fallback.isNotEmpty()) Resource.Success(fallback)
-            else Resource.Error("אין אינטרנט ואין צמחים זמינים")
+            else Resource.Error("No internet, no plants available.")
         }
     }
     suspend fun getCachedPlants(): List<CachedApiPlant> {

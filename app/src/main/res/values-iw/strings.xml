@@ -59,4 +59,5 @@
     <string name="full_shade">צל מלא</string>
     <string name="sun_part_shade">שמש עם חלקי צל</string>
     <string name="unknown_plant">זן לא ידוע</string>
+    <string name="next_watering">יום השקייה הבא: %1$s</string>
 </resources>

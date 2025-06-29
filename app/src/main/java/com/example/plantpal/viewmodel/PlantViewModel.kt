@@ -43,12 +43,11 @@ class PlantViewModel @Inject constructor(
     var selectedFilter: Int? = null
 
 
-    val apiKey = "sk-jUJ3682e15df5603a10557"
+    private val apiKey = "sk-jUJ3682e15df5603a10557"
 
     val activeReminders = reminderScheduler.getWateringRemindersLiveData()
 
     init {
-
         fetchPlantsCacheFirst()
     }
 
@@ -72,9 +71,8 @@ class PlantViewModel @Inject constructor(
                 cachedRepository.saveApiPlantsToCache(apiPlants)
             } catch (e: Exception) {
                 if (cached.isEmpty()) {
-                    _plantList.value = Resource.Error("אין אינטרנט ואין נתונים זמינים")
+                    _plantList.value = Resource.Error("No internet, no information available.")
                 } else {
-                    Log.e("PLANT_DEBUG", "API fetch failed: ${e.message}")
                     // השאר את הקאש על המסך
                 }
             }
@@ -83,22 +81,7 @@ class PlantViewModel @Inject constructor(
 
 
 
-/*
-    fun fetchPlantsWithFallback() {
-        viewModelScope.launch {
-            _plantList.value = Resource.Loading()
-            val result = cachedRepository.loadPlantsWithFallback()
-            when (result) {
-                is Resource.Success -> _plantList.value = Resource.Success(result.data.map { it.toApiPlant() })
-                is Resource.Error -> _plantList.value = Resource.Error(result.message)
-                else -> Unit
-            }
-        }
-    }
-*/
-
     fun fetchPlants(indoor: Int? = null) {
-        Log.d("FILTER_LOG", "Fetching plants with filter: indoor = $indoor")
         selectedFilter = indoor
 
         viewModelScope.launch {
@@ -107,34 +90,13 @@ class PlantViewModel @Inject constructor(
                 val response = repository.getPlants(indoor,apiKey)
                 val result = response.data
 
-                Log.d("FILTER_LOG", "Received response: $result")
-                Log.d("FILTER_LOG", "Number of plants: ${result.size}")
-                Log.d("FILTER_LOG", "Received ${response.data.size} plants from API")
-
                 _plantList.value = Resource.Success(response.data)
             } catch (e: Exception) {
-                Log.e("PLANT_DEBUG", "Error filtering plants", e)
                 _plantList.value = Resource.Error("Couldn't filter: ${e.message}")
             }
         }
     }
-
-    fun fetchPlantsFromApi() {
-        viewModelScope.launch {
-            _plantList.value = Resource.Loading() // ⏳ טוען
-            try {
-                val response = repository.getPlants(apiKey)
-                _plantList.value = Resource.Success(response.data)
-            } catch (e: Exception) {
-                Log.e("PLANT_DEBUG", "Error fetching plants", e)
-                _plantList.value = Resource.Error("Failed to load plants: ${e.message}")
-            }
-
-
-        }
-
-
-    }
+    
 
     fun fetchPlantDetails(id: Int) {
         viewModelScope.launch {
@@ -144,7 +106,6 @@ class PlantViewModel @Inject constructor(
                 val details = repository.getPlantDetails(id, apiKey)
                 _plantDetails.value = Resource.Success(details) // ✅
             } catch (e: Exception) {
-                Log.e("PLANT_DEBUG", "Error fetching details", e)
                 _plantDetails.value = Resource.Error("Failed to load: ${e.message}")
             }
         }

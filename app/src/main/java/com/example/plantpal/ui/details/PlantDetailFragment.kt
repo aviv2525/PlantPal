@@ -94,7 +94,7 @@ class PlantDetailFragment : Fragment() {
 
 
 
-        // שליפת מידע נוסף מה-API
+        // Extra data from - API: Info about water&sunlight
         viewModel.fetchPlantDetails(plantId)
         viewModel.plantDetails.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -138,9 +138,9 @@ class PlantDetailFragment : Fragment() {
                             "sun-part shade" -> "⛅ sun part shade"
                             "filtered shade" -> "🌫 filtered shade"
                             "full shade" -> "🌑 full shade"
-                            else -> "❓ $sunlightValue"
+                            else -> " $sunlightValue"
                         }
-                    } ?: listOf("❓ unknown")
+                    } ?: listOf(" unknown")
 
                     sunlightRaw = details.sunlight?.joinToString ( " | " )
                     binding.tvSunlightInfo.text = getString(R.string.sunlight_info) + sunlightTexts.joinToString(" | ")
