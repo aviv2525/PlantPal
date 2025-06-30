@@ -25,7 +25,6 @@ class WateringReminderScheduler(private val context: Context) {
     }
 
     fun scheduleWateringReminder(plantName: String, wateringFrequency: String) {
-        Log.d(TAG, "Scheduling reminder for $plantName with frequency $wateringFrequency")
         try {
             val workRequest = createWorkRequest(plantName, wateringFrequency)
             workManager.enqueueUniquePeriodicWork(
@@ -33,17 +32,14 @@ class WateringReminderScheduler(private val context: Context) {
                 ExistingPeriodicWorkPolicy.UPDATE,
                 workRequest
             )
-            Log.d(TAG, "Successfully scheduled reminder for $plantName")
         } catch (e: Exception) {
             Log.e(TAG, "Error scheduling reminder for $plantName", e)
         }
     }
 
     fun cancelWateringReminder(plantName: String) {
-        Log.d(TAG, "Cancelling reminder for $plantName")
         try {
             workManager.cancelUniqueWork("watering_reminder_$plantName")
-            Log.d(TAG, "Successfully cancelled reminder for $plantName")
         } catch (e: Exception) {
             Log.e(TAG, "Error cancelling reminder for $plantName", e)
         }
@@ -70,7 +66,6 @@ class WateringReminderScheduler(private val context: Context) {
     }
 
     fun scheduleTestReminder(plantName: String) {
-        Log.d(TAG, "Scheduling test reminder for $plantName")
         try {
             val inputData = Data.Builder()
                 .putString(WateringReminderWorker.PLANT_NAME_KEY, plantName)
@@ -81,9 +76,7 @@ class WateringReminderScheduler(private val context: Context) {
                 .setInputData(inputData)
                 .addTag("test_reminder")
                 .build()
-
             workManager.enqueue(testRequest)
-            Log.d(TAG, "Successfully scheduled test reminder for $plantName")
         } catch (e: Exception) {
             Log.e(TAG, "Error scheduling test reminder for $plantName", e)
         }

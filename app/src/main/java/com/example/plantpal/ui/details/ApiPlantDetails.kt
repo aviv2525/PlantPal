@@ -1,3 +1,4 @@
+
 package com.example.plantpal.ui.details
 
 import android.os.Parcelable

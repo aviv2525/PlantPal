@@ -26,22 +26,18 @@ class WateringReminderWorker(
 
     override suspend fun doWork(): Result {
         val plantName = params.inputData.getString(PLANT_NAME_KEY) ?: run {
-            Log.e(TAG, "Plant name not provided in input data")
             return Result.failure()
         }
 
-        Log.d(TAG, "Starting reminder work for plant: $plantName")
 
         return try {
             createNotificationChannel()
             showNotification(plantName)
-            Log.d(TAG, "Successfully showed notification for $plantName")
 
             val output = workDataOf(PLANT_NAME_KEY to plantName)
             Result.success(output)
 
         } catch (e: Exception) {
-            Log.e(TAG, "Error showing notification for $plantName", e)
             Result.failure()
         }
     }

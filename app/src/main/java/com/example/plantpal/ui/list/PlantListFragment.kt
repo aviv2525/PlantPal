@@ -90,7 +90,7 @@ class PlantListFragment : Fragment() {
         )
 
         val orientation = resources.configuration.orientation
-        val columns = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 3 else 1
+        val columns = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 2 else 1
         binding.rvFavorites.layoutManager = GridLayoutManager(requireContext(), columns)
 
         binding.rvFavorites.adapter = adapter

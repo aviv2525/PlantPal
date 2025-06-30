@@ -100,7 +100,7 @@ class ApiPlantListFragment : Fragment() {
         )
 
         val orientation = resources.configuration.orientation
-        val spanCount = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 3 else 1
+        val spanCount = if (orientation == Configuration.ORIENTATION_LANDSCAPE) 2 else 1
 
         binding.rvApiProducts.layoutManager = GridLayoutManager(requireContext(), spanCount)
         binding.rvApiProducts.adapter = adapter
