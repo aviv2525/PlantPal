@@ -1,6 +1,9 @@
 🪴 PlantPal – Android App for Plant Lovers
 PlantPal is an Android app that helps users explore, save, and manage plants.
 
+Youtube Video :
+https://www.youtube.com/watch?v=hU3Em6RoTjY&t=32s
+
 ✨ Features:
 📦 Fetch plants from a public API using Retrofit
 
@@ -32,10 +35,8 @@ Hilt (Dagger)
 LiveData + ViewModel 
 
 
-
 Material UI
 
-🚀 Coming Next:
 Reminders for plant watering (using WorkManager)
 
 Custom notes and tags for saved plants
